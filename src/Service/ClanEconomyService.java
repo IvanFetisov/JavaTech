@@ -3,7 +3,27 @@ package Service;
 import Clans.Clan;
 import Exceptions.NotEnoughGoldException;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class ClanEconomyService implements Runnable {
+    Random random = new Random();
+    public int summToReceive = 20;
+
+    public void setSummToReceive (int summToReceive){
+        this.summToReceive = summToReceive;
+    }
+    public void addGoldFromMultipleClans(Clan... V ){
+     for (Clan clan: Arrays.asList(V)){
+         if (clan.getSumGolds()!=0){
+         clan.setSumGolds(clan.getSumGolds()-summToReceive);
+         }
+     }
+        transferToClan(V[random.nextInt(V.length)], summToReceive*V.length);
+    }
+    public void transferToClan(Clan clan,int summ){
+        clan.setSumGolds(summ);
+    }
 
     public void addGoldFromCoupleClans(Clan receiver, Clan giver, Clan giver1,int sum) throws NotEnoughGoldException {
         Thread thread = new Thread();
@@ -15,7 +35,7 @@ public class ClanEconomyService implements Runnable {
         }else{
             throw new NotEnoughGoldException("You cant add more gold to different account if you dont have enough gold on account");
         }
-        thread.suspend();
+        thread.yield();
     }
     public void sendGolds (int summ, Clan clan){
         if (clan.getSumGolds()>= summ) {

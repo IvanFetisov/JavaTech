@@ -1,4 +1,8 @@
 
+import Clans.BarbarianClan;
+import Clans.Clan;
+import Clans.MagicianClan;
+import Clans.ThiefClan;
 import Enumeration.TypeEnum;
 import Items.*;
 import Players.BarbarianPlayer;
@@ -11,21 +15,19 @@ import Service.ShieldService;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //TODO: Тебе нужно добавить  PlayerService, который будет содержать дефолтные методы, также и метод по созданию рандомного пользователя
-        //
-        ClanEconomyService clanEconomyService = new ClanEconomyService();
-        ItemCreationService itemCreationService = new ItemCreationService();
-        Bow bow = new Bow();
-        Item sword = new Sword();
-        Item axe = new Axe();
-        itemCreationService.createRandomItemUsingReflection(bow);
-        itemCreationService.createRandomItemUsingReflection(sword);
-        itemCreationService.createRandomItemUsingReflection(axe);
-        ShieldService shieldService = new ShieldService();
-        Shield shield = new FullShield();
-        shieldService.createRandomShield(shield);
-        PlayerService playerService = new PlayerService();
-
-        System.out.println(playerService.createRandomPlayer());
+         Clan clan = new BarbarianClan();
+         Clan clan1 = new ThiefClan();
+         Clan clan2 = new ThiefClan();
+         clan.setSumGolds(20);
+         clan1.setSumGolds(20);
+         clan2.setSumGolds(20);
+         Clan clan3 = new BarbarianClan();
+         ClanEconomyService clanEconomyService = new ClanEconomyService();
+         clanEconomyService.setSummToReceive(10);
+         clanEconomyService.addGoldFromMultipleClans(clan,clan1,clan2,clan3);
+        System.out.println(clan1.toString());
+        System.out.println(clan.toString());
+        System.out.println(clan2.toString());
+        System.out.println(clan3.toString());
     }
 }

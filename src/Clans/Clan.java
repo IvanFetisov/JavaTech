@@ -74,7 +74,7 @@ public abstract class Clan {
                 ", name='" + name + '\'' +
                 ", summOfPlayers=" + summOfPlayers +
                 ", sumGolds=" + sumGolds +
-                ", playersInClan=" + playersInClan.toString() +
+                //", playersInClan=" + playersInClan.toString() +
                 '}';
     }
 }
