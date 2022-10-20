@@ -1,5 +1,6 @@
 package Service;
 
+import Annotations.Loggable;
 import Enumeration.MagicType;
 import Enumeration.TypeEnum;
 import Items.*;
@@ -30,6 +31,7 @@ public class PlayerService {
         return names[random.nextInt(names.length)];
     }
 
+@Loggable
     public <T extends Player> Player createRandomPlayer() throws Exception {
         BarbarianPlayer barbarianPlayer = new BarbarianPlayer();
         MagicianPlayer magicianPlayer = new MagicianPlayer();

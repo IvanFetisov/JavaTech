@@ -121,10 +121,6 @@ public class ItemCreationService {
         }
         return item;
     }
-
-
-
-
     public String setRandomNameToItem(String[] names){
     fillName(names);
         String name = names[random.nextInt(this.names.length)];
